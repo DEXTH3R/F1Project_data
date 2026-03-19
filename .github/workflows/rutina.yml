@@ -26,4 +26,4 @@ jobs:
         env:
           GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }} 
         # RECUERDA: Cambia "TU_ARCHIVO.ipynb" por el nombre de tu cuaderno
-        run: jupyter nbconvert --execute --to notebook --inplace "TU_ARCHIVO.ipynb"
+        run: jupyter nbconvert --execute --to notebook --inplace "data_F1Project.ipynb"
