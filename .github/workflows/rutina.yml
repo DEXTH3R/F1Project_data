@@ -2,8 +2,8 @@ name: Rutina Diaria Google Sheets
 
 on:
   schedule:
-    - cron: '0 8,14,20,1 * * *' # Ejemplo: 3 veces al día
-  workflow_dispatch:
+    - cron: '20 12,1,8,10,20 * * *' 
+  workflow_dispatch: 
 
 jobs:
   ejecutar-bot:
@@ -18,14 +18,12 @@ jobs:
         with:
           python-version: '3.10'
 
-      - name: 📦 Instalar dependencias para Colab y código
-        # Aquí instalamos nbconvert para que lea tu .ipynb, gspread para Google, y debes añadir las tuyas
-        run: |
-          pip install nbconvert ipykernel gspread
-          # REEMPLAZA ESTA LÍNEA SI USAS MÁS LIBRERÍAS (ej: pip install pandas requests)
+      - name: 📦 Instalar dependencias exactas
+        # Aquí están TODAS las herramientas que tu código necesita para no fallar
+        run: pip install nbconvert ipykernel gspread requests beautifulsoup4 pandas gspread-dataframe oauth2client
 
       - name: ▶️ Ejecutar archivo .ipynb
         env:
           GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }} 
-        # Esta orden lee tu Colab, lo ejecuta celda por celda en el servidor y termina
-        run: jupyter nbconvert --execute --to notebook --inplace "data_F1Project.ipynb"
+        # RECUERDA: Cambia "TU_ARCHIVO.ipynb" por el nombre de tu cuaderno
+        run: jupyter nbconvert --execute --to notebook --inplace "TU_ARCHIVO.ipynb"
