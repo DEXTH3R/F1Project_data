@@ -14,7 +14,7 @@ def guardar_en_hoja(libro, nombre_pestaña, dataframe):
         hoja.clear()
     except WorksheetNotFound:
         hoja = libro.add_worksheet(title=nombre_pestaña, rows="100", cols="30")
-    set_with_dataframe(hoja, dataframe, index=False)
+    set_with_dataframe(hoja, dataframe, include_index=False)
     print(f"✅ Guardado en: '{nombre_pestaña}'")
 
 def ejecutar_bot():
