@@ -25,16 +25,16 @@ def ejecutar_bot():
     sh = gc.open("F1_Base_De_Datos_2026")
 
     # 2. Ejecutar extracciones de forma independiente
-    df_cal = extraer_calendario.obtener_df_calendario()
-    df_pil = extraer_pilotos.run()
+    #df_cal = extraer_calendario.obtener_df_calendario()
+    #df_pil = extraer_pilotos.run()
     df_con = extraer_constructores.run()
 
     # 3. Guardar resultados
-    guardar_en_hoja(sh, "Calendario_MARCA", df_cal)
-    guardar_en_hoja(sh, "Pilotos_ESPN", df_pil)
+    #guardar_en_hoja(sh, "Calendario_MARCA", df_cal)
+    #guardar_en_hoja(sh, "Pilotos_ESPN", df_pil)
     guardar_en_hoja(sh, "Constructores_ESPN", df_con)
 
-    print(f"\n🏁 Proceso completado. URL: {sh.url}")
+    print(f"\nProceso completado. URL: {sh.url}")
 
 if __name__ == "__main__":
     ejecutar_bot()
