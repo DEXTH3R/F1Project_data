@@ -1,8 +1,9 @@
-name: Rutina Diaria Google Sheets
+name: Rutina Diaria F1 Bot Modular
 
 on:
   schedule:
-    - cron: '20 12,1,8,10,20 * * *' 
+    # Se ejecuta a las 01:20, 08:20, 10:20, 12:20 y 20:20 UTC
+    - cron: '20 1,8,10,12,20 * * *' 
   workflow_dispatch: 
 
 jobs:
@@ -18,12 +19,13 @@ jobs:
         with:
           python-version: '3.10'
 
-      - name: 📦 Instalar dependencias exactas
-        # Aquí están TODAS las herramientas que tu código necesita para no fallar
-        run: pip install nbconvert ipykernel gspread requests beautifulsoup4 pandas gspread-dataframe oauth2client StringIO
+      - name: 📦 Instalar dependencias
 
-      - name: ▶️ Ejecutar archivo .ipynb
+        run: |
+          pip install gspread requests beautifulsoup4 pandas gspread-dataframe oauth2client lxml
+
+      - name: ▶️ Ejecutar Bot (main.py)
         env:
           GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }} 
-        # RECUERDA: Cambia "TU_ARCHIVO.ipynb" por el nombre de tu cuaderno
-        run: jupyter nbconvert --execute --to notebook --inplace "data_F1Project.ipynb"
+   
+        run: python main.py
