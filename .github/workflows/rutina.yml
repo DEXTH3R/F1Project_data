@@ -20,7 +20,7 @@ jobs:
 
       - name: 📦 Instalar dependencias exactas
         # Aquí están TODAS las herramientas que tu código necesita para no fallar
-        run: pip install nbconvert ipykernel gspread requests beautifulsoup4 pandas gspread-dataframe oauth2client
+        run: pip install nbconvert ipykernel gspread requests beautifulsoup4 pandas gspread-dataframe oauth2client StringIO
 
       - name: ▶️ Ejecutar archivo .ipynb
         env:
